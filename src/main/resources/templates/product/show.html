@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Page</title>
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/4.3.1/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/3.4.1/jquery.min.js"
+            th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <link href="../../static/css/spring-core.css" rel="stylesheet" media="screen">
+</head>
+<body>
+<div class="container ">
+    <nav class="nav navbar mr-0 ml-0 mt-0 align-content-between align-baseline">
+        <a class="nav-item ml-0 text-decoration-none btn-outline-primary m-2" th:href="${'/'}">
+            <button class="btn-outline-primary btn">Home</button></a>
+
+        <a class="nav-item text-decoration-none  m-2" th:href="${'/product/list'}">
+            <button class="btn-outline-primary btn">Products</button>
+        </a>
+        <a class="nav-item text-decoration-none  m-2" th:href="${'/customer/list'}">
+            <button class="btn-outline-primary btn">Customers</button>
+        </a>
+    </nav>
+</div>
+    <hr/>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>Show Product</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+                <form class="form-horizontal">
+                    <div class="form-group d-flex">
+                        <label class="col-sm-2 font-weight-bold">Product Id : </label>
+                        <div class="col-sm-10">
+                            <p class="form-control form-control-plaintext" th:text="${product.id}"></p>
+                        </div>
+                    </div>
+                    <div class="form-group d-flex">
+                        <label class="col-sm-2 font-weight-bold">Description: </label>
+                        <div class="col-sm-10">
+                            <p class="form-control form-control-plaintext" th:text="${product.description}">Description</p>
+                        </div>
+                    </div>
+                    <div class="form-group d-flex">
+                        <label class="col-sm-2 font-weight-bold">Price : </label>
+                        <div class="col-sm-10">
+                            <p class="form-control form-control-plaintext" th:text="${product.price}">Price</p>
+                        </div>
+                    </div>
+                    <div class="form-group d-flex">
+                        <label class="col-sm-2 font-weight-bold">Image URL : </label>
+                        <div class="col-sm-10 ">
+                            <p class="form-control form-control-plaintext" th:text="${product.imageUrl}"></p>
+                        </div>
+                    </div>
+                </form>
+                <button class="btn btn-primary">
+                    <a th:href="${'/product/list'}" class="text-light text-decoration-none">Back</a>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

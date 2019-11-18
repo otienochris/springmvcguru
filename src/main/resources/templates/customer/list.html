@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All customers</title>
+    <link th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}" rel="stylesheet" media="screen" type="text/css"/>
+    <link th:href="@{css/spring-core.css}" rel="stylesheet" media="screen" type="text/css">
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+</head>
+<body>
+<div class="container ">
+    <nav class="nav navbar mr-0 ml-0 mt-0 align-content-between align-baseline">
+        <a class="nav-item ml-0 text-decoration-none btn-outline-primary m-2" th:href="${'/'}">
+            <button class="btn-outline-primary btn">Home</button></a>
+
+        <a class="nav-item text-decoration-none  m-2" th:href="${'/product/list'}">
+            <button class="btn-outline-primary btn">Products</button>
+        </a>
+        <a class="nav-item text-decoration-none  m-2" th:href="${'/customer/list'}">
+            <button class="btn-outline-primary btn">Customers</button>
+        </a>
+    </nav>
+</div>
+    <hr/>
+    <div class="container">
+        <div th:if="${not #lists.isEmpty(customers)}">
+            <h1>Customers list</h1>
+            <table class="table table-striped">
+                <tr>
+                    <th>Id</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>show</th>
+                    <th>edit</th>
+                    <th>delete</th>
+                </tr>
+                <tr th:each="customer : ${customers}">
+                    <td th:text="${customer.id}"></td>
+                    <td th:text="${customer.firstName}"></td>
+                    <td th:text="${customer.lastName}"></td>
+                    <td th:text="${customer.email}"></td>
+                    <td><a th:href="${'/customer/show/' + customer.id}" class="btn btn-info">show</a></td>
+                    <td><a th:href="${'/customer/edit/' + customer.id}" class="btn btn-primary">edit</a></td>
+                    <td><a th:href="${'/customer/delete/' + customer.id}" class="btn btn-danger">delete</a></td>
+                </tr>
+            </table>
+        </div>
+        <div th:if="${#lists.isEmpty(customers)}">
+            <h1>Oops! There are no items to show</h1>
+        </div>
+
+        <div class="row">
+            <a th:href="${'/customer/new'}" class="text-dark text-decoration-none"><button class="btn btn-info">Add Customer</button></a>
+        </div>
+    </div>
+
+</body>
+</html>

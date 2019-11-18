@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update / Add product</title>
+    <link th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}" rel="stylesheet" media="screen" type="text/css"/>
+    <link th:href="@{css/spring-core.css}" rel="stylesheet" media="screen" type="text/css">
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+</head>
+<body>
+<div class="container ">
+    <nav class="nav navbar mr-0 ml-0 mt-0 align-content-between align-baseline">
+        <a class="nav-item ml-0 text-decoration-none btn-outline-primary m-2" th:href="${'/'}">
+            <button class="btn-outline-primary btn">Home</button></a>
+
+        <a class="nav-item text-decoration-none  m-2" th:href="${'/product/list'}">
+            <button class="btn-outline-primary btn">Products</button>
+        </a>
+        <a class="nav-item text-decoration-none  m-2" th:href="${'/customer/list'}">
+            <button class="btn-outline-primary btn">Customers</button>
+        </a>
+    </nav>
+</div>
+    <hr/>
+    <div class="container">
+        <h2>Customer Detail</h2>
+        <form th:object="${customer}" th:action="@{/customer/}" method="post">
+            <input type="hidden" th:field="*{id}"/>
+            <div class="form-group">
+                <label class="col-sm-2 custom-control">First name : </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{firstName}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 custom-control">Last name : </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{lastName}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 custom-control">email : </label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" th:field="*{email}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 custom-control">Phone No. : </label>
+                <div class="col-sm-10">
+                    <input type="tel" class="form-control" th:field="*{phoneNumber}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 custom-control">Address Line1 : </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{addressLine1}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 custom-control">Address Line2 : </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{addressLine2}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 custom-control">City : </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{city}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 custom-control">State : </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{state}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 custom-control">Zip Code : </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{zipCode}">
+                </div>
+            </div>
+            <div class="row">
+                <button type="submit" class="btn btn-light">add</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
