@@ -2,13 +2,10 @@ package com.otienochris.springmvcguru.services.mapservices;
 
 import com.otienochris.springmvcguru.models.DomainObject;
 import com.otienochris.springmvcguru.models.Product;
-import com.otienochris.springmvcguru.services.AbstractMapService;
 import com.otienochris.springmvcguru.services.servicesinterfaces.ProductService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
-import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -34,18 +31,5 @@ public class ProductServiceImp extends AbstractMapService implements ProductServ
     public Product saveOrUpdate(Product domainObject) {
         return (Product) super.saveOrUpdate(domainObject);
     }
-
-/*    @Override
-    protected void loadDomainObject() {
-        domainMap = new HashMap<>();
-
-        Product product1 = new Product();
-        product1.setId(1);
-        product1.setDescription("Product 1");
-        product1.setPrice(new BigDecimal("12.99"));
-        product1.setImageUrl("http://example.com/product1");
-
-        domainMap.put(1, product1);
-    }*/
 
 }

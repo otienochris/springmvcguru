@@ -1,6 +1,5 @@
 package com.otienochris.springmvcguru.services.jpaservices;
 
-import com.otienochris.springmvcguru.models.DomainObject;
 import com.otienochris.springmvcguru.models.User;
 import com.otienochris.springmvcguru.services.servicesinterfaces.UserService;
 

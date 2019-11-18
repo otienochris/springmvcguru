@@ -2,7 +2,6 @@ package com.otienochris.springmvcguru.services.mapservices;
 
 import com.otienochris.springmvcguru.models.DomainObject;
 import com.otienochris.springmvcguru.models.User;
-import com.otienochris.springmvcguru.services.AbstractMapService;
 import com.otienochris.springmvcguru.services.servicesinterfaces.UserService;
 
 import java.util.List;

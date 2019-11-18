@@ -1,4 +1,4 @@
-package com.otienochris.springmvcguru.services;
+package com.otienochris.springmvcguru.services.mapservices;
 
 import com.otienochris.springmvcguru.models.DomainObject;
 

@@ -2,12 +2,10 @@ package com.otienochris.springmvcguru.services.mapservices;
 
 import com.otienochris.springmvcguru.models.Customer;
 import com.otienochris.springmvcguru.models.DomainObject;
-import com.otienochris.springmvcguru.services.AbstractMapService;
 import com.otienochris.springmvcguru.services.servicesinterfaces.CustomerService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
 
 @Service
