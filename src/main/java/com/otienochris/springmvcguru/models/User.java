@@ -20,7 +20,17 @@ public class User implements DomainObject {
 
     private boolean enabled = true;
 
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    private Customer customer;
 
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+        customer.setUser(this);
+    }
 
     public Integer getVersion() {
         return version;

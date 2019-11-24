@@ -2,6 +2,7 @@ package com.otienochris.springmvcguru.services;
 
 import com.otienochris.springmvcguru.config.JpaIntegrationConfig;
 import com.otienochris.springmvcguru.models.Customer;
+import com.otienochris.springmvcguru.models.User;
 import com.otienochris.springmvcguru.services.servicesinterfaces.CustomerService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -42,7 +43,7 @@ public class CustomerServiceJapDaoImplTest {
     }
 
     @Test
-    public void testSaveOrUpdate(){
+    public void testSaveOrUpdateWithUser(){
         Customer customer = new Customer();
         customer.setFirstName("Michael");
         customer.setLastName("Weston");
@@ -52,6 +53,11 @@ public class CustomerServiceJapDaoImplTest {
         customer.setZipCode("33101");
         customer.setEmail("michael@wetson.com");
         customer.setPhoneNumber("305.333.0101");
+
+        User user = new User();
+        user.setUsername("otienochris");
+        user.setPassword("coo2017*");
+        customer.setUser(user);
 
         customerService.saveOrUpdate(customer);
 

@@ -1,7 +1,9 @@
 package com.otienochris.springmvcguru.services.jpaservices;
 
 import com.otienochris.springmvcguru.models.Customer;
+import com.otienochris.springmvcguru.services.security.EncryptionService;
 import com.otienochris.springmvcguru.services.servicesinterfaces.CustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +14,15 @@ import java.util.List;
 @Profile("jpadao")
 public class CustomerServiceJpaDaoImpl extends AbstractJpaDaoService implements CustomerService {
 
+    private EncryptionService encryptionService;
+
+    @Autowired
+    public void setEncryptionService(EncryptionService encryptionService) {
+        this.encryptionService = encryptionService;
+    }
+
     @Override
-    public List<?> listAll() {
+    public List<Customer> listAll() {
         EntityManager em = emf.createEntityManager();
         return em.createQuery("from Customer", Customer.class).getResultList();
     }
@@ -31,6 +40,13 @@ public class CustomerServiceJpaDaoImpl extends AbstractJpaDaoService implements 
         EntityManager em = emf.createEntityManager();
 
         em.getTransaction().begin();
+
+        if (domainObject.getUser() != null && domainObject.getUser().getPassword() != null){
+            domainObject.getUser().setEncryptedPassword(
+                encryptionService.encryptString(domainObject.getUser().getPassword())
+            );
+        }
+
         Customer savedCustomer = em.merge(domainObject);
         em.getTransaction().commit();
 
