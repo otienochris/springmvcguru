@@ -34,10 +34,10 @@ public class CustomerServiceJapDaoImplTest {
 
     @Test
     public void testGetById(){
-        Customer product = customerService.getById(6);
-        assert product != null;
-        assert product.getCity() == "Nairobi";
-        assert product.getState() == "Kenya";
+        Customer customer = customerService.getById(6);
+        assert customer != null;
+        assert customer.getBillingAddress().getCity() == "Nairobi";
+        assert customer.getBillingAddress().getState() == "Kenya";
 
 //        TODO -- other properties shoud be tested also to ensure extensive test
     }
@@ -47,10 +47,10 @@ public class CustomerServiceJapDaoImplTest {
         Customer customer = new Customer();
         customer.setFirstName("Michael");
         customer.setLastName("Weston");
-        customer.setAddressLine1("1 Main St");
-        customer.setCity("Miami");
-        customer.setState("Florida");
-        customer.setZipCode("33101");
+        customer.getBillingAddress().setAddressLine1("1 Main St");
+        customer.getBillingAddress().setCity("Miami");
+        customer.getBillingAddress().setState("Florida");
+        customer.getBillingAddress().setZipCode("33101");
         customer.setEmail("michael@wetson.com");
         customer.setPhoneNumber("305.333.0101");
 

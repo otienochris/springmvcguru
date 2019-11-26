@@ -1,5 +1,6 @@
 package com.otienochris.springmvcguru.controllers;
 
+import com.otienochris.springmvcguru.models.Address;
 import com.otienochris.springmvcguru.models.Customer;
 import com.otienochris.springmvcguru.services.servicesinterfaces.CustomerService;
 import org.junit.jupiter.api.BeforeEach;
@@ -95,26 +96,27 @@ class CustomerControllerTest {
         String tel = "305.333.0101";
 
         Customer returnCustomer = new Customer();
-        returnCustomer.setId(id);
+//        returnCustomer.setId(id);
         returnCustomer.setFirstName(fname);
         returnCustomer.setLastName(lname);
-        returnCustomer.setAddressLine1(add1);
-        returnCustomer.setCity(city);
-        returnCustomer.setState(state);
-        returnCustomer.setZipCode(zip);
+        returnCustomer.setShippingAddress(new Address());
+        returnCustomer.getShippingAddress().setAddressLine1(add1);
+        returnCustomer.getShippingAddress().setCity(city);
+        returnCustomer.getShippingAddress().setState(state);
+        returnCustomer.getShippingAddress().setZipCode(zip);
         returnCustomer.setEmail(email);
         returnCustomer.setPhoneNumber(tel);
 
         when(customerService.saveOrUpdate(Mockito.any(Customer.class))).thenReturn(returnCustomer);
 
         mockMvc.perform(post("/customer/")
-                .param("id", "1")
+//                .param("id", "1")
                 .param("firstName", fname)
                 .param("lastName", lname)
-                .param("addressLine1", add1)
-                .param("city", city)
-                .param("state", state)
-                .param("zipCode", zip)
+                .param("shippingAddress.addressLine1", add1)
+                .param("shippingAddress.city", city)
+                .param("shippingAddress.state", state)
+                .param("shippingAddress.zipCode", zip)
                 .param("email", email)
                 .param("phoneNumber", tel))
                     .andExpect(status().is3xxRedirection())
@@ -123,10 +125,10 @@ class CustomerControllerTest {
                     .andExpect(model().attribute("customer", hasProperty("id", is(id))))
                     .andExpect(model().attribute("customer", hasProperty("firstName", is(fname))))
                     .andExpect(model().attribute("customer", hasProperty("lastName", is(lname))))
-                    .andExpect(model().attribute("customer", hasProperty("addressLine1", is(add1))))
-                    .andExpect(model().attribute("customer", hasProperty("city", is(city))))
-                    .andExpect(model().attribute("customer", hasProperty("state", is(state))))
-                    .andExpect(model().attribute("customer", hasProperty("zipCode", is(zip))))
+                    .andExpect(model().attribute("customer", hasProperty( "shippingAddress ",hasProperty("addressLine1", is(add1)))))
+                    .andExpect(model().attribute("customer", hasProperty( "shippingAddress ",hasProperty("city", is(city)))))
+                    .andExpect(model().attribute("customer", hasProperty( "shippingAddress ",hasProperty("state", is(state)))))
+                    .andExpect(model().attribute("customer", hasProperty( "shippingAddress ",hasProperty("zipCode", is(zip)))))
                     .andExpect(model().attribute("customer", hasProperty("email", is(email))))
                     .andExpect(model().attribute("customer", hasProperty("phoneNumber", is(tel))));
 
@@ -137,10 +139,10 @@ class CustomerControllerTest {
         assertEquals(id, boundCustomer.getValue().getId());
         assertEquals(fname, boundCustomer.getValue().getFirstName());
         assertEquals(lname, boundCustomer.getValue().getLastName());
-        assertEquals(add1, boundCustomer.getValue().getAddressLine1());
-        assertEquals(city, boundCustomer.getValue().getCity());
-        assertEquals(state, boundCustomer.getValue().getState());
-        assertEquals(zip, boundCustomer.getValue().getZipCode());
+        assertEquals(add1, boundCustomer.getValue().getShippingAddress().getAddressLine1());
+        assertEquals(city, boundCustomer.getValue().getShippingAddress().getCity());
+        assertEquals(state, boundCustomer.getValue().getShippingAddress().getState());
+        assertEquals(zip, boundCustomer.getValue().getShippingAddress().getZipCode());
         assertEquals(email, boundCustomer.getValue().getEmail());
         assertEquals(tel, boundCustomer.getValue().getPhoneNumber());
     }

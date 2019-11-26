@@ -1,5 +1,6 @@
 package com.otienochris.springmvcguru.bootstrap;
 
+import com.otienochris.springmvcguru.models.Address;
 import com.otienochris.springmvcguru.models.Customer;
 import com.otienochris.springmvcguru.models.Product;
 import com.otienochris.springmvcguru.services.servicesinterfaces.CustomerService;
@@ -37,11 +38,12 @@ public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedE
         customer1.setLastName("Christopher");
         customer1.setEmail("otienochris98@gmail.com");
         customer1.setPhoneNumber("07040544670");
-        customer1.setCity("Nairobi");
-        customer1.setState("Kenya");
-        customer1.setZipCode("OP-Q 200-34");
-        customer1.setAddressLine1("");
-        customer1.setAddressLine2("");
+        customer1.setBillingAddress(new Address());
+        customer1.getBillingAddress().setCity("Nairobi");
+        customer1.getBillingAddress().setState("Kenya");
+        customer1.getBillingAddress().setZipCode("OP-Q 200-34");
+        customer1.getBillingAddress().setAddressLine1("");
+        customer1.getBillingAddress().setAddressLine2("");
         customerService.saveOrUpdate(customer1);
 
 
@@ -50,11 +52,12 @@ public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedE
         customer2.setLastName("Chris");
         customer2.setEmail("otienochris@gmail.com");
         customer2.setPhoneNumber("0722544670");
-        customer2.setCity("Nakuru");
-        customer2.setState("Kenya");
-        customer2.setZipCode("OP-P 200-34");
-        customer2.setAddressLine1("san 2");
-        customer2.setAddressLine2("");
+        customer2.setBillingAddress(new Address());
+        customer2.getBillingAddress().setCity("Nakuru");
+        customer2.getBillingAddress().setState("Kenya");
+        customer2.getBillingAddress().setZipCode("OP-P 200-34");
+        customer2.getBillingAddress().setAddressLine1("san 2");
+        customer2.getBillingAddress().setAddressLine2("");
         customerService.saveOrUpdate(customer2);
 
 
@@ -63,11 +66,12 @@ public class SpringJpaBootstrap implements ApplicationListener<ContextRefreshedE
         customer3.setLastName("Charles");
         customer3.setEmail("peterchris98@gmail.com");
         customer3.setPhoneNumber("0740598670");
-        customer3.setCity("Nairobi");
-        customer3.setState("Uganda");
-        customer3.setZipCode("OP-Q 200-34");
-        customer3.setAddressLine1("");
-        customer3.setAddressLine2("");
+        customer3.setBillingAddress(new Address());
+        customer3.getBillingAddress().setCity("Nairobi");
+        customer3.getBillingAddress().setState("Uganda");
+        customer3.getBillingAddress().setZipCode("OP-Q 200-34");
+        customer3.getBillingAddress().setAddressLine1("");
+        customer3.getBillingAddress().setAddressLine2("");
         customerService.saveOrUpdate(customer3);
     }
 
